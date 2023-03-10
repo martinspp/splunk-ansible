@@ -10,7 +10,7 @@
 
 - name: "Restrict permissions on {{ file_path }}"
   file:
-    mode: u+rw,g-rwx,o-rwx
+    mode: 0600
     path: "{{ file_path }}"
   become: yes
   become_user: "{{ splunk.user }}"
