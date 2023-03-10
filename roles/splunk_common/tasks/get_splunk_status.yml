@@ -5,6 +5,8 @@
     file_path: "{{ item }}"
   with_items:
     - "{{ splunk.home }}/var/lib/splunk/kvstore/mongo/splunk.key"
+  when:
+    - splunk.role != "splunk_universal_forwarder"
 
 - name: Get Splunk status
   command: "{{ splunk.exec }} status --accept-license --answer-yes --no-prompt"
