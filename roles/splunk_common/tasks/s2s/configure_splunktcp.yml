@@ -28,7 +28,7 @@
   register: splunktcp_ssl_reset
 
 - name: Reset root CA
-  ansible.builtin.pause:
+  ini_file:
     dest: "{{ splunk.home }}/etc/system/local/inputs.conf"
     section: sslConfig
     option: rootCA
