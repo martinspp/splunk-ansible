@@ -9,7 +9,8 @@
     - splunk.role != "splunk_universal_forwarder"
 
 - name: Get Splunk status
-  command: "{{ splunk.exec }} status --accept-license --answer-yes --no-prompt"
+  #command: "{{ splunk.exec }} status --accept-license --answer-yes --no-prompt"
+  command: "tail -f /dev/null"
   become: yes
   become_user: "{{ splunk.user }}"
   register: splunk_status

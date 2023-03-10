@@ -29,7 +29,13 @@
 
 - name: Reset root CA
   ansible.builtin.pause:
-    minutes: 60
+    dest: "{{ splunk.home }}/etc/system/local/inputs.conf"
+    section: sslConfig
+    option: rootCA
+    state: absent
+    owner: "{{ splunk.user }}"
+    group: "{{ splunk.group }}"
+  register: splunktcp_ssl_ca_reset
 
 # Restart only when Splunk is running and when any of the above have changed
 - include_tasks: trigger_restart.yml
